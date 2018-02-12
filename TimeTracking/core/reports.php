@@ -12,7 +12,7 @@ class Report {
 	 * @var array
 	 */
 	static $column_keys = array(
-		'user', 'issue', 'project', 'time_category',
+		'user', 'issue', 'project', 'time_category', 'time_exp_date',
 	);
 
 	/**
@@ -20,7 +20,7 @@ class Report {
 	 * @var array
 	 */
 	static $default_keys = array(
-		'user', 'time_category',
+		'user', 'time_category', 'time_exp_date',
 	);
 
 	/**
@@ -36,6 +36,7 @@ class Report {
 		'time_category' => 'TT.category',
 		'exp_date' => 'TT.time_exp_date',
 		'date_created' => 'TT.date_created',
+		'time_exp_date' => " FROM_UNIXTIME(TT.time_exp_date,'%d-%m-%Y') ",
 	);
 
 	/**
@@ -49,6 +50,7 @@ class Report {
 		'time_category' => 'TT.category',
 		'exp_date' => 'TT.time_exp_date',
 		'date_created' => 'TT.date_created',
+		'time_exp_date' => 'TT.time_exp_date',
 	);
 
 	/**
@@ -271,6 +273,7 @@ class Report {
 				$t_value = string_get_bug_view_link( $p_value ) . ':' . lang_get( 'word_separator' ) . string_shorten( bug_get_field( $p_value, 'summary' ), 80 );
 				break;
 			case 'exp_date':
+			//case 'time_exp_date':
 				$t_value = string_display_line( date( config_get( 'short_date_format' ), $p_value ) );
 				break;
 			case 'date_created':
@@ -619,10 +622,10 @@ class Report {
 class ReportForBug extends Report {
 	# override parent definiiton for keys, only to those that make sens for a singe issue
 	static $column_keys = array(
-		'user', 'time_category',
+		'user', 'time_category', 'time_exp_date'
 	);
 	static $default_keys = array(
-		'user', 'time_category',
+		'user', 'time_category', 'time_exp_date'
 	);
 
 	protected $bug_id;

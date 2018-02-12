@@ -4,6 +4,8 @@ $s_plugin_TimeTracking_title = 'Time Tracking';
 $s_plugin_TimeTracking_categories = 'Categories';
 
 $s_plugin_TimeTracking_expenditure_date = 'Expenditure Date';
+$s_plugin_TimeTracking_time_exp_date = $s_plugin_TimeTracking_expenditure_date;
+
 $s_plugin_TimeTracking_category = 'Category';
 $s_plugin_TimeTracking_information = 'Information';
 $s_plugin_TimeTracking_configuration = 'Configuration';
